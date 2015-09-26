@@ -1,4 +1,4 @@
-var arr = [[1, 2, 3,], [4, 5, 6], [7, 8, 9]];
+var arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 var turn = 0;
 var winners = [];
 
@@ -108,6 +108,7 @@ function winOrnot(xy, ox) {
 	} else if (xy == 'a09') {
 		arr[2][2] = ox;
 	} 
+	$('#check').html(arr);
 
 	for (var i = 0; i < 3; i ++) {
 		strx = arr[i][0]+arr[i][1]+arr[i][2];
