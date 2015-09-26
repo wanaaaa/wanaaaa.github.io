@@ -1,0 +1,117 @@
+/* 
+Project Name: Blank Template
+Client: Your Client
+Author: Your Name
+Developer @GA in NYC
+*/
+
+
+/******************************************
+/* SETUP                   
+/*******************************************/
+
+/* Box Model Hack */
+* {
+     -moz-box-sizing: border-box; /* Firexfox */
+     -webkit-box-sizing: border-box; /* Safari/Chrome/iOS/Android */
+     box-sizing: border-box; /* IE */
+}
+
+
+.inline {
+	display: inline-block;
+}
+
+#switchBlock {
+	display: block;
+}
+
+#turnName {
+	padding-left: 40px;
+}
+
+.div {
+	width: 70px;
+	height: 70px;
+	display: inline-block;
+	font-size: 60px;
+}
+
+.div.bottomRight {
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+}
+
+.div.bottom {
+	border-bottom: 2px solid black;
+}
+
+.div.right {
+	border-right: 2px solid black;
+}
+
+.div.rotate {
+	transform:rotate(20deg);
+}
+
+.div.o, .div.playerLeft {
+	background-image: url(../img/font.jpg);
+	background-position: 240px -3px;
+	background-size: 1701%;
+}
+
+.div.x, .div.playerRight {
+	background-image: url(../img/font.jpg);
+	background-position: 204px -145px;
+	background-size: 1635%;
+}
+
+
+.rotate {
+-webkit-animation: cssAnimation 0.2s 1 ease;
+-moz-animation: cssAnimation 0.2s 1 ease;
+-o-animation: cssAnimation 0.2s 1 ease;
+}
+@-webkit-keyframes cssAnimation {
+from { -webkit-transform: rotate(0deg); }
+to { -webkit-transform: rotate(113deg) ; }
+}
+@-moz-keyframes cssAnimation {
+from { -moz-transform: rotate(0deg); }
+to { -moz-transform: rotate(113deg); }
+}
+@-o-keyframes cssAnimation {
+from { -o-transform: rotate(0deg); }
+to { -o-transform: rotate(113deg); }
+}
+
+.rrotate {
+-webkit-animation: cssAnimation 1s 5 ease;
+-moz-animation: cssAnimation 1s 5 ease;
+-o-animation: cssAnimation 1s 5 ease;
+}
+@-webkit-keyframes cssAnimation {
+from { -webkit-transform: rotate(0deg); }
+to { -webkit-transform: rotate(113deg) ; }
+}
+@-moz-keyframes cssAnimation {
+from { -moz-transform: rotate(0deg); }
+to { -moz-transform: rotate(113deg); }
+}
+@-o-keyframes cssAnimation {
+from { -o-transform: rotate(0deg); }
+to { -o-transform: rotate(113deg); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
