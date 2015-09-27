@@ -34,6 +34,7 @@ $(function() {
 		}
 
 		if (winOrnot(coordinate, ox)[0] == true) {
+			winarr = [];
 			align = winOrnot(coordinate, ox)[1]+winOrnot(coordinate, ox)[2];
 			if (align == "x0") {
 				$('#a01, #a02, #a03').addClass('rrotate');
