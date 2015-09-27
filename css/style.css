@@ -105,9 +105,9 @@ to { -o-transform:  scale(0.1); }
 
 
 .rrotate {
--webkit-animation: cssAnimation 1s 5 ease;
--moz-animation: cssAnimation 1s 5 ease;
--o-animation: cssAnimation 1s 5 ease;
+-webkit-animation: cssAnimation 0.5s 3 ease;
+-moz-animation: cssAnimation 0.5s 3 ease;
+-o-animation: cssAnimation 0.5s 3 ease;
 }
 @-webkit-keyframes cssAnimation {
 from { -webkit-transform: rotate(0deg); }

@@ -1,7 +1,7 @@
 var arr = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']];
 var turn = 0;
-var winners = [];
 var winarr = [];
+var rrotate;
 
 $(function() {
 	$('#new').submit(addNewItem);
@@ -15,7 +15,6 @@ $(function() {
 			$('#turnName').html($('#player02').html());
 		} else if (turn % 2 == 1) {
 			classPlayer = 'playerRight';
-			//ox = "x";
 			$('#turnName').html($('#player01').html());		
 		};
 
@@ -34,49 +33,63 @@ $(function() {
 		}
 
 		winOrnot(coordinate, ox);
-		// if (winOrnot(coordinate, ox)[0] == true) {
-		// 	align = winOrnot(coordinate, ox)[1]+winOrnot(coordinate, ox)[2];
-		// 	if (align == "x0") {
-		// 		$('#a01, #a02, #a03').addClass('rrotate');
-		// 	} else if (align == 'x1') {
-		// 		$('#a04, #a05, #a06').addClass('rrotate');
-		// 	} else if (align == 'x2') {
-		// 		$('#a07, #a08, #a09').addClass('rrotate');				
-		// 	} else if (align == 'y0') {
-		// 		$('#a01, #a04, #a07').addClass('rrotate');				
-		// 	} else if (align == 'y1') {
-		// 		$('#a02, #a05, #a08').addClass('rrotate');
-		// 	} else if (align == 'y2') {
-		// 		$('#a03, #a06, #a09').addClass('rrotate');
-		// 	} else if (align == 'z1100') {
-		// 		$('#a01, #a05, #a09').addClass('rrotate');
-		// 	} else if (align == 'z2100') {
-		// 		$('#a03, #a05, #a07').addClass('rrotate');
-		// 	}
-		// 	delayTimeRotate2(this);
-
-		// 	if (classPlayer =="playerLeft") {
-		// 		winners.push("winnerLeft");
-		// 	} else if (classPlayer == "playerRight") {
-		// 		winners.push('winnerRight');
-		// 	}	
-		// }//end of winOrnot
-
-		if (turn % 2 == 1) {
-			if (winners.indexOf('winnerLeft') !== -1 && winners.indexOf('winnerRight') !== -1) {
-				alert('Tie');
-			} else if (winners.indexOf('winnerLeft') !== -1) {
-				alert('Winner is Left');
-			} else if (winners.indexOf('winnerRight') !== -1) {
-				alert('Winner is winnerRight');
-			}
+		if (winarr.length > 0) {
+			finalWinnerRotate();			
 		}
 
+		console.log(turn, winarr);
+		$('#check').html(turn + "-" + winarr);
+		if ( turn % 2 == 1) {
+			if (winarr.length == 2) {
+				alert("tie");
+			} else if (winarr.length == 1) {
+				$('#check').append(winarr[0][1]);
+				if (winarr[0][1] == 'ooo') {
+					alert('winner left');
+				} else if (winarr[0][1]) {
+					alert("winner right");					
+				}
+			}// winnerCongratualtion();			
+		};
+
 		turn += 1;
-		$('#check').html(winarr);
 	})//$('.div').click
 	
 });
+
+function winnerCongratualtion() {
+	if (winarr.length == 2) {
+		console.log("tie")
+	} else if ( winarr[0][1] == '000') {
+		console.log('left');
+	} else if (winarr[0][1] == 'xxx') {
+		console.log('right');
+	};
+}
+
+function finalWinnerRotate() {
+	for (var rr = 0; rr < winarr.length; rr ++) {
+		if (winarr[rr][0] == 'x0') {
+			rrotate = '#a01, #a02, #a03';
+		} else if (winarr[rr][0] == 'x1') {
+			rrotate = '#a04, #a05, #a06'
+		} else if (winarr[rr][0] == 'x2') {
+			rrotate = '#a07, #a08, #a09'
+		} else if (winarr[rr][0] == 'y0') {
+			rrotate = '#a1, #a04, #a07'
+		} else if (winarr[rr][0] == 'y1') {
+			rrotate = '#a02, #a05, #a08'
+		} else if (winarr[rr][0] == 'y2') {
+			rrotate = '#a03, #a06, #a09'
+		} else if (winarr[rr][0] == 'z1') {
+			rrotate = '#a01, #a05, #a09'
+		} else if (winarr[rr][0] == 'z2') {
+			rrotate = '#a03, #a05, #a07'
+		} 		
+		$(rrotate).addClass('rrotate');
+	}
+
+} //finalWinnerRotate end
 
 function removeRepeat(arr) {
 	newarr = [];
