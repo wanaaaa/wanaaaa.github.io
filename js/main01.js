@@ -53,27 +53,28 @@ $(function() {
 				$('#a03, #a05, #a07').addClass('rrotate');
 			}
 			delayTimeRotate2(this);
-			winners.push(classPlayer);		
 
-			if (classPlayer == "playerRight" ) {
-				if (winners.length == 2) {
-					console.log("Tie");
-					alert("Tie");					
-				} else {
-					console.log("Winner Right");
-					alert("Right");				
-				}
-				winners = [];
-			} 
-		}
+			if (classPlayer =="playerLeft") {
+				winners.push("winnerLeft");
+			} else if (classPlayer == "playerRight") {
+				winners.push('winnerRight');
+			}	
+		}//end of winOrnot
 
-		if (classPlayer == "playerRight" && winners.length == 1) {
-			console.log("Left");
-			alert("Left");
+		if (turn % 2 == 1) {
+			if (winners.indexOf('winnerLeft') !== -1 && winners.indexOf('winnerRight') !== -1) {
+				alert('Tie');
+			} else if (winners.indexOf('winnerLeft') !== -1) {
+				alert('Winner is Left');
+			} else if (winners.indexOf('winnerRight') !== -1) {
+				alert('Winner is winnerRight');
+			}
 		}
 
 		turn += 1;
+		$('#check').html(winarr);
 	})//$('.div').click
+	
 });
 
 
@@ -90,7 +91,6 @@ function delayTimeRotate2() {
 }
 
 function winOrnot(xy, ox) {
-	$('#check').html(winarr);
 	if (xy == "a01") {
 		arr[0][0] = ox;
 	} else if (xy == "a02") {
@@ -109,33 +109,42 @@ function winOrnot(xy, ox) {
 		arr[2][1] = ox;
 	} else if (xy == 'a09') {
 		arr[2][2] = ox;
-	} 
+	}; 
 
 	for (var i = 0; i < 3; i ++) {
 		strx = arr[i][0]+arr[i][1]+arr[i][2];
 		stry = arr[0][i]+arr[1][i]+arr[2][i];
-		winarrX = [[i, 0], [i, 1], [i, 2]];
-		winarrY = [[0, i], [1, i], [2, i]];
+		winarrX = ['x'+ i];
+		winarrY = ['y'+ i];
+		console.log(i, winarrX, winarrY)
 		
 		if (strx =='ooo'||strx=='xxx') {
 			if (winarr.indexOf(winarrX) == -1) {
 				winarr.push(winarrX);
 				return [true, "x", i];
 			}
-		} else if (stry=='ooo'||stry=='xxx') {
-			winarr.push(winarrY);
-			return [true, 'y', i];
+		} 
+
+		if (stry =='ooo'||stry =='xxx') {
+				if(winarr.indexOf(winarrY) == -1) {
+					winarr.push(winarrY);
+					return [true, 'y', i];
+				}			
 		} 
 	}
 
 	strz1 = arr[0][0]+arr[0][0]+arr[2][2];
 	strz2 = arr[0][2]+arr[1][1]+arr[2][0];
-	if (strz1=='ooo'||strz1=='xxx') {
+	if (strz1=='ooo'|| strz1=='xxx') {
+		if (winarr.indexOf("z1") == -1) {
 			winarr.push("z1");
-			return [true, 'z1', 100];
+			return [true, 'z1', 100];			
+		}
 	} else if (strz2=='ooo'||strz2=='xxx') {
+		if (winarr.indexOf('z2') ==-1) {
 			winarr.push("z2");
 			return [true, 'z2', 100]
+		}
 	}
 	return false;
 }

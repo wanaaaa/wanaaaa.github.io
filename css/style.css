@@ -73,17 +73,36 @@ Developer @GA in NYC
 -o-animation: cssAnimation 0.2s 1 ease;
 }
 @-webkit-keyframes cssAnimation {
-from { -webkit-transform: rotate(0deg); }
-to { -webkit-transform: rotate(113deg) ; }
+from { -webkit-transform: rotate(0deg) }
+to { -webkit-transform: rotate(113deg) }
 }
 @-moz-keyframes cssAnimation {
-from { -moz-transform: rotate(0deg); }
-to { -moz-transform: rotate(113deg); }
+from { -moz-transform: rotate(0deg) }
+to { -moz-transform: rotate(113deg) }
 }
 @-o-keyframes cssAnimation {
-from { -o-transform: rotate(0deg); }
-to { -o-transform: rotate(113deg); }
+from { -o-transform: rotate(0deg) }
+to { -o-transform: rotate(113deg) }
 }
+
+/*.rotate {
+-webkit-animation: cssAnimation 0.2s 1 ease;
+-moz-animation: cssAnimation 0.2s 1 ease;
+-o-animation: cssAnimation 0.2s 1 ease;
+}
+@-webkit-keyframes cssAnimation {
+from { -webkit-transform: scale(0.1); }
+to { -webkit-transform:  scale(1); }
+}
+@-moz-keyframes cssAnimation {
+from { -moz-transform:  scale(0.1); }
+to { -moz-transform:  scale(0.1); }
+}
+@-o-keyframes cssAnimation {
+from { -o-transform:  scale(0.1); }
+to { -o-transform:  scale(0.1); }
+}*/
+
 
 .rrotate {
 -webkit-animation: cssAnimation 1s 5 ease;
