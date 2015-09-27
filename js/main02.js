@@ -3,6 +3,8 @@ var turn = 0;
 var winarr = [];
 var rrotate = '';
 var theWinner = "";
+var winLeft = 0;
+var winRight = 0;
 
 
 $(function() {
@@ -12,6 +14,7 @@ $(function() {
 
 
 	$('.div').click (function() {
+		console.log(turn);
 		if (turn % 2 == 0) {
 			classPlayer = 'playerLeft';
 			$('#turnName').html($('#player02').html());
@@ -46,9 +49,13 @@ $(function() {
 				theSlideUp();
 			} else if (winarr.length == 1) {
 				if (winarr[0][1] == 'ooo') {
-					theWinner = $('#player01').html();					
+					theWinner = $('#player01').html();
+					winLeft += 1;
+					$('#leftWinNumber').html('Number of win: ' + winLeft);					
 				} else if (winarr[0][1] = 'xxx') {
-					theWinner = $('#player02').html();					
+					theWinner = $('#player02').html();
+					winRight += 1;					
+					$('#rightWinNumber').html('Number of win: ' + winRight);
 				};
 				theWinnerIs(theWinner);
 				theSlideUp();
@@ -66,10 +73,12 @@ function theSlideUp() {
 		$('#playBoard').toggleClass('hide');
 		$('.div').removeClass('playerLeft').removeClass('playerRight');
 	}, 2000);	
+	arr = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']];
+	turn = -1;
+	winarr = [];
 }
 
 function theWinnerIs(name) {
-	console.log(name);
 	$('#playBoard').toggleClass('hide');
 	if (name == "tie") {
 		$('#slide').html('<h3>The game is Tie</3>');
