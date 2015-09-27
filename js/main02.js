@@ -1,7 +1,9 @@
 var arr = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']];
 var turn = 0;
 var winarr = [];
-var rrotate;
+var rrotate = '';
+var theWinner = "";
+
 
 $(function() {
 	$('#new').submit(addNewItem);
@@ -37,34 +39,44 @@ $(function() {
 			finalWinnerRotate();			
 		}
 
-		console.log(turn, winarr);
-		$('#check').html(turn + "-" + winarr);
 		if ( turn % 2 == 1) {
 			if (winarr.length == 2) {
-				alert("tie");
+				theWinner = "tie";
+				theWinnerIs(theWinner);
+				theSlideUp();
 			} else if (winarr.length == 1) {
-				$('#check').append(winarr[0][1]);
 				if (winarr[0][1] == 'ooo') {
-					alert('winner left');
-				} else if (winarr[0][1]) {
-					alert("winner right");					
-				}
-			}// winnerCongratualtion();			
+					theWinner = $('#player01').html();					
+				} else if (winarr[0][1] = 'xxx') {
+					theWinner = $('#player02').html();					
+				};
+				theWinnerIs(theWinner);
+				theSlideUp();
+			};		
 		};
-
+	
 		turn += 1;
 	})//$('.div').click
 	
 });
+///////////////////////////////////////////////////////
+function theSlideUp() {
+	setTimeout (function() {
+		$("#slide").slideUp('slow');
+		$('#playBoard').toggleClass('hide');
+		$('.div').removeClass('playerLeft').removeClass('playerRight');
+	}, 2000);	
+}
 
-function winnerCongratualtion() {
-	if (winarr.length == 2) {
-		console.log("tie")
-	} else if ( winarr[0][1] == '000') {
-		console.log('left');
-	} else if (winarr[0][1] == 'xxx') {
-		console.log('right');
-	};
+function theWinnerIs(name) {
+	console.log(name);
+	$('#playBoard').toggleClass('hide');
+	if (name == "tie") {
+		$('#slide').html('<h3>The game is Tie</3>');
+	} else {
+		$('#slide').html('<h3>The winner is '+name+'</h3>')		
+	}
+	$('#slide').slideDown('slow');
 }
 
 function finalWinnerRotate() {

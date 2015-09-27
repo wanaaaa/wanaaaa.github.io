@@ -17,6 +17,17 @@ Developer @GA in NYC
      box-sizing: border-box; /* IE */
 }
 
+#playBoard {
+	z-index: -1;
+}
+
+#slide {
+	display: none;
+	z-index: 100;
+	position: relative;
+	padding-left: 50px;
+	padding-top: 100px;
+}
 
 .inline {
 	display: inline-block;
