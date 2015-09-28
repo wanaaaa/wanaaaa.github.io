@@ -85,6 +85,12 @@ $(function() {
 	$('#reset').click(function() {
 		location.reload();
 	})
+
+	$('input').keypress(function(e) {
+		if(e.which == 13) {
+			$("#newItem").html("asdf");
+		}
+	})
 	
 });
 ///////////////////////////////////////////////////////
@@ -97,7 +103,8 @@ function scoreZero() {
 	winLeft = 0;
 	winRight = 0;
 	$('#leftWinNumber').html('Number of win: ' + winLeft);
-	$('#leftWinNumber').html('Number of win: ' + winRight);
+	$('#rightWinNumber').html('Number of win: ' + winRight);
+	console.log('score zro');
 }
 
 function theSlideUp() {
@@ -105,7 +112,7 @@ function theSlideUp() {
 		$("#slide").slideUp('slow');
 		$('#playBoard').toggleClass('hide');
 		$('.div').removeClass('playerLeft').removeClass('playerRight');
-	}, 2000);	
+	}, 3000);	
 	arr = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']];
 	turn = -1;
 	winarr = [];
