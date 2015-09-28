@@ -8,13 +8,17 @@ var winRight = 0;
 
 
 $(function() {
+	$('#scoreZero').click(function() {
+		scoreZero();
+		$('#test').html(turn,winLeft, winRight);
+	});
+	console.log('after zero');
 	$('#new').submit(addNewItem);
 
 	$('#turnName').html($('#player01').html());
 
 
 	$('.div').click (function() {
-		console.log(turn);
 		if (turn % 2 == 0) {
 			classPlayer = 'playerLeft';
 			$('#turnName').html($('#player02').html());
@@ -67,6 +71,18 @@ $(function() {
 	
 });
 ///////////////////////////////////////////////////////
+function scoreZero() {
+	arr = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']];
+	turn = 0;
+	winarr = [];
+	rrotate = '';
+	theWinner = "";
+	winLeft = 0;
+	winRight = 0;
+	$('#leftWinNumber').html('Number of win: ' + winLeft);
+	$('#leftWinNumber').html('Number of win: ' + winRight);
+}
+
 function theSlideUp() {
 	setTimeout (function() {
 		$("#slide").slideUp('slow');
