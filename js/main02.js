@@ -8,11 +8,7 @@ var winRight = 0;
 
 
 $(function() {
-	$('#scoreZero').click(function() {
-		scoreZero();
-		$('#test').html(turn,winLeft, winRight);
-	});
-	console.log('after zero');
+
 	$('#new').submit(addNewItem);
 
 	$('#turnName').html($('#player01').html());
@@ -68,6 +64,15 @@ $(function() {
 	
 		turn += 1;
 	})//$('.div').click
+	
+	$('#scoreZero').click(function() {
+		scoreZero();
+		$('#test').html(turn,winLeft, winRight);
+	});
+
+	$('#reset').click(function() {
+		location.reload();
+	})
 	
 });
 ///////////////////////////////////////////////////////
