@@ -61,6 +61,18 @@ $(function() {
 				theSlideUp();
 			};		
 		};
+
+		filledCells = 0;
+		for (var nn = 1; nn <= 11; nn ++ ) {
+			if ($('.div:nth-child('+nn+')').hasClass('playerLeft') || $('.div:nth-child('+nn+')').hasClass('playerRight')) {
+			 	filledCells += 1;
+			};
+			if (filledCells == 9) {
+				theWinner = "tie";
+				theWinnerIs(theWinner);
+				theSlideUp();
+			}
+		}
 	
 		turn += 1;
 	})//$('.div').click
